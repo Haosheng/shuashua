@@ -2,12 +2,14 @@ class MinStack {
 public:
     void push(int x) {
         s.push_back(x);
+	//Check if current min element needs updating
         if (minS.empty() || x <= minS[minS.size() - 1])
             minS.push_back(x);
     }
 
     void pop() {
         int x = s[s.size() - 1];
+	//Check if current min element needs updating
         if (!minS.empty() && x == minS[minS.size() - 1])
             minS.pop_back();
         s.pop_back();
