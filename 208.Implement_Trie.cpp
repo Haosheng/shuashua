@@ -28,40 +28,34 @@ public:
     // Inserts a word into the trie.
     void insert(string word) {
        TrieNode *Node=root;
-       TrieNode *prev;
         for(int i=0;i<word.size();i++){
             int index = word[i]-'a';
             if(Node->children[index]==NULL){
                 Node->children[index]=new TrieNode();
             }
-            prev=Node;
             Node=Node->children[index];
         }
-        prev->isWord=true;
+        Node->isWord=true;
     }
 
     // Returns if the word is in the trie.
     bool search(string word) {
         TrieNode* Node=root;
-        TrieNode *prev;
         for(int i=0;i<word.size();i++){
             int index=word[i]-'a';
             if(Node->children[index]==NULL) return false;
-            prev=Node;
             Node=Node->children[index];
         }
-        return prev->isWord;
+        return Node->isWord;
     }
 
     // Returns if there is any word in the trie
     // that starts with the given prefix.
     bool startsWith(string prefix) {
         TrieNode* Node=root;
-        TrieNode *prev;
         for(int i=0;i<prefix.size();i++){
             int index=prefix[i]-'a';
             if(Node->children[index]==NULL) return false;
-            prev=Node;
             Node=Node->children[index];
         }
         return true;
@@ -75,3 +69,9 @@ private:
 // Trie trie;
 // trie.insert("somestring");
 // trie.search("key");
+
+/***
+    Use a bool variable to mark whether it is a word.
+    This code would just pass the Online Judgement, however, destructor should be implemented to avoid memory leak.
+    Moreover, think of how to implement delete(string word) function.
+***/
