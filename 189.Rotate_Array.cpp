@@ -1,5 +1,5 @@
-#METHOD = 2             //No. 0 and 1 has both 2n moves
-#if (METHOD == 0)
+#define METHOD 0             //No. 0 and 1 has both 2n moves
+#if METHOD == 0
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
@@ -15,7 +15,8 @@ public:
         reverse(nums.begin(), nums.end());
     }
 };
-#else if (METHOD == 1)
+#endif
+#if (METHOD == 1)
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
@@ -39,7 +40,8 @@ private:
         }
     }
 };
-#else
+#endif
+#if (METHOD == 2)
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
@@ -67,3 +69,4 @@ public:
     }
 };
 #endif
+
