@@ -22,7 +22,6 @@ All words contain only lowercase alphabetic characters.
 */
 
 //Optimized by searching from both sides
-
 class Solution {
 public:
     vector<vector<string>> findLadders(string start, string end, unordered_set<string> &dict) {
