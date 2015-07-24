@@ -48,7 +48,7 @@ private:
             return false;
 	//search from the side with fewer words
         if (start.size() > end.size())
-            return findPath(end, start, found, pre, su, dict, !reversed);
+            return findPath(end, start, found, pre, su, dict, !reversed);	//just never use ~reversed for flipping! Stuck on this for like an hour
         unordered_set<string> mid;
         for (string word : start) {
             string originalWord = word;
