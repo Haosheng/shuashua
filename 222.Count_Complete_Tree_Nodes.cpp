@@ -30,8 +30,6 @@ public:
             ++height;
             p = p->left;
         }
-        if (height == 1)    //This does not suit in the following while loop, since the p in the loop must not start from the bottom most layer
-            return 1;
         int count = 0, start = 1, result = (1 << (height - 1)) - 1;
         p = root;
         TreeNode *cur = root;
