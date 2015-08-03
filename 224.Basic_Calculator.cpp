@@ -89,7 +89,7 @@ public:
                     ++next;
                 num.push(stoi(s.substr(start, next - start)));
                 if (!op.empty() && (op.top() == '*' || op.top() == '/' || op.top() == '%'))
-                    calculateLatest(num, op);
+                    calculateLatest(num, op, true);
                 start = next;
             } else {
                 if (s[start] == '(')
@@ -120,17 +120,22 @@ private:
         if (!op.empty())
             op.pop();
         while (!tempOp.empty())
-            calculateLatest(tempNum, tempOp);
+            calculateLatest(tempNum, tempOp, false);
         return tempNum.top();
     }
     
-    void calculateLatest(stack<int> &num, stack<char> &op) {
+    void calculateLatest(stack<int> &num, stack<char> &op, bool rev) {
         if (num.empty() || op.empty())
             return;
         int num1 = num.top();
         num.pop();
         int num2 = num.top();
         num.pop();
+	if (rev) {
+	    int temp = num1;
+	    num1 = num2;
+	    num2 = temp;
+	}
         switch (op.top()) {
             case '+':
                 num1 += num2;
